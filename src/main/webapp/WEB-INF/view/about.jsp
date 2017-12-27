@@ -36,7 +36,7 @@
                     <hr>
                     <blockquote>
                         <p>原博主代码：<a href="https://github.com/Amayadream/WebChat" target="_blank">https://github.com/Amayadream/WebChat</a></p>
-                        <p>小弟的代码：<a href="https://github.com/Amayadream/WebChat" target="_blank">https://github.com/Amayadream/WebChat</a></p>
+                        <p>小弟的代码：<a href="https://github.com/chengchuanqiang/WebChat" target="_blank">https://github.com/chengchuanqiang/WebChat</a></p>
                     </blockquote>
                 </div>
             </div>
