@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd
+        http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+        http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-4.3.xsd ">
+
+
+    <context:component-scan base-package="com.ccq.controller"/>
+    <!-- 开启注解模式 -->
+    <mvc:annotation-driven/>
+
+    <!-- 静态资源映射 -->
+    <mvc:resources mapping="/static/**" location="/static/"/>
+
+    <!--<mvc:resources location="/WEB-INF/view/image/" mapping="/image/**"/>-->
+    <!--<mvc:resources location="/WEB-INF/view/js/" mapping="/js/**"/>-->
+    <!--<mvc:resources location="/WEB-INF/view/css/" mapping="/css/**"/>-->
+
+    <mvc:interceptors>
+        <!-- 登陆拦截器,负责拦截未登录的操作 -->
+        <mvc:interceptor>
+            <!-- 需要拦截的地址 -->
+            <mvc:mapping path="/**"/>
+            <!-- 需要排除拦截的地址 -->
+            <mvc:exclude-mapping path="/static/**"/>
+            <bean id="loginInterceptor" class="com.ccq.interceptor.LoginInterceptor">
+                <property name="IGNORE_URI">
+                    <list>
+                        <value>/user/login</value>
+                        <value>/user/logout</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!-- 文件上传 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设置上传文件的最大尺寸为5MB -->
+        <property name="maxUploadSize">
+            <value>5242880</value>
+        </property>
+    </bean>
+
+    <!--配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+
+</beans>

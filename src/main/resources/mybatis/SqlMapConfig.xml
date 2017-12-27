@@ -1,0 +1,26 @@
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- 定义 别名 -->
+	<typeAliases>
+		<!-- 批量别名定义 指定包路径，自动扫描包下边的pojo，定义别名，别名默认为类名（首字母小写或大写） -->
+		<package name="com.ccq.pojo" />
+	</typeAliases>
+	<!-- 配置分页插件 -->
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageHelper">
+			<!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库-->
+			<property name="dialect" value="mysql"/>
+		</plugin>
+	</plugins>
+
+	<!-- 
+	由于使用spring和mybatis整合的mapper扫描器，这里可以不用配置了
+	<mappers>
+		<package name="com.ccq.mapper" />
+
+
+	</mappers> -->
+
+
+</configuration>
