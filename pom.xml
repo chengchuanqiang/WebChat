@@ -186,6 +186,15 @@
                 </includes>
                 <filtering>false</filtering>
             </resource>
+                 <!-- 编译之后包含xml和properties -->
+             <resource>
+               <directory>src/main/resources</directory>
+               <includes>
+                 <include>**/*</include>
+               </includes>
+               <filtering>true</filtering>
+             </resource>
+  </resources>
         </resources>
     </build>
 </project>
