@@ -21,7 +21,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //获取URI后缀
-        String requestUri = request.getServletPath();
+       /* String requestUri = request.getServletPath();
 
         if(requestUri.equalsIgnoreCase("/"))    return true;
 
@@ -37,7 +37,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         }else{
             response.sendRedirect("user/login?timeout=true");
             return false;
-        }
+        }*/
+        return true;
     }
 
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
